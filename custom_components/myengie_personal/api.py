@@ -38,6 +38,9 @@ class MyEngieMaintenance(MyEngieError):
     """Serverul ENGIE răspunde cu pagină de mentenanță."""
 
 
+_MAINTENANCE_HINTS = ("mentenan", "indisponibil", "actualizare engie", "maintenance")
+
+
 def _unwrap(raw: Any) -> Any:
     """Răspunsurile ENGIE sunt de forma {"data": ...}; extrage conținutul."""
     if isinstance(raw, dict) and "data" in raw:
@@ -119,8 +122,10 @@ class MyEngieApi:
         try:
             return json.loads(text)
         except ValueError as err:
-            low = text[:600].lower()
-            if "mentenan" in low or "indisponibil" in low:
+            low = text.lower()
+            # Pagina „Actualizare engie.ro” are textul relevant mult după primele caractere,
+            # așa că verificăm tot răspunsul. Orice pagină HTML pe un endpoint JSON înseamnă tot mentenanță.
+            if any(k in low for k in _MAINTENANCE_HINTS) or low.lstrip().startswith(("<!doctype html", "<html")):
                 raise MyEngieMaintenance("Serverul ENGIE este în mentenanță") from err
             raise MyEngieError(f"Răspuns non-JSON (HTTP {resp.status})") from err
 
