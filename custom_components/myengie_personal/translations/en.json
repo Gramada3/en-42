@@ -1,0 +1,61 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "MyENGIE (personal)",
+        "description": "Sign in with your my.engie.ro account.",
+        "data": {
+          "username": "Email",
+          "password": "Password",
+          "update_interval": "Update interval (seconds)"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Re-authenticate MyENGIE",
+        "description": "The password for {username} is no longer accepted. Enter the new one.",
+        "data": {
+          "password": "Password"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Wrong email or password.",
+      "cannot_connect": "Cannot reach the ENGIE server.",
+      "maintenance": "The ENGIE server is under maintenance. Try again later."
+    },
+    "abort": {
+      "already_configured": "Account already configured.",
+      "reauth_successful": "Re-authentication successful."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "MyENGIE options",
+        "data": {
+          "update_interval": "Update interval (seconds, min 900)"
+        }
+      }
+    }
+  },
+  "services": {
+    "trimite_index": {
+      "name": "Submit meter reading",
+      "description": "Submit a self-reading for an ENGIE meter.",
+      "fields": {
+        "installation": {
+          "name": "Installation",
+          "description": "Installation number (shown in the Index contor sensor attributes)."
+        },
+        "index": {
+          "name": "Reading",
+          "description": "Meter value (integer)."
+        }
+      }
+    },
+    "actualizeaza": {
+      "name": "Refresh",
+      "description": "Refresh data for all MyENGIE accounts now."
+    }
+  }
+}

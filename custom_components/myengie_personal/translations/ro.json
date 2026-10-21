@@ -1,0 +1,61 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "MyENGIE (personal)",
+        "description": "Autentificare cu contul my.engie.ro.",
+        "data": {
+          "username": "Email",
+          "password": "Parolă",
+          "update_interval": "Interval actualizare (secunde)"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Reautentificare MyENGIE",
+        "description": "Parola pentru {username} nu mai este acceptată. Introdu parola nouă.",
+        "data": {
+          "password": "Parolă"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Email sau parolă greșită.",
+      "cannot_connect": "Nu se poate contacta serverul ENGIE.",
+      "maintenance": "Serverul ENGIE este în mentenanță. Încearcă mai târziu."
+    },
+    "abort": {
+      "already_configured": "Contul este deja configurat.",
+      "reauth_successful": "Reautentificare reușită."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Opțiuni MyENGIE",
+        "data": {
+          "update_interval": "Interval actualizare (secunde, minim 900)"
+        }
+      }
+    }
+  },
+  "services": {
+    "trimite_index": {
+      "name": "Trimite index",
+      "description": "Trimite autocitirea pentru un contor ENGIE.",
+      "fields": {
+        "installation": {
+          "name": "Instalație",
+          "description": "Numărul instalației (apare în atributele senzorului Index contor)."
+        },
+        "index": {
+          "name": "Index",
+          "description": "Valoarea citită pe contor (număr întreg)."
+        }
+      }
+    },
+    "actualizeaza": {
+      "name": "Actualizează",
+      "description": "Reîncarcă imediat datele din toate conturile MyENGIE."
+    }
+  }
+}

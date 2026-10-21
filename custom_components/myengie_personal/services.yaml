@@ -1,0 +1,17 @@
+trimite_index:
+  fields:
+    installation:
+      required: true
+      example: "4001573662"
+      selector:
+        text:
+    index:
+      required: true
+      example: 8250
+      selector:
+        number:
+          min: 0
+          max: 99999999
+          mode: box
+
+actualizeaza:
